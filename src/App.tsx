@@ -2,6 +2,8 @@ import { useState } from 'react';
 import styles from './App.module.css';
 import powerImage from './assets/powered.png';
 import Swal from 'sweetalert2';
+import { levels, calculateImc } from './helpers/imc';
+import { GridItem } from './components/GridItem';
 
 const App =() =>{
 
@@ -10,7 +12,7 @@ const App =() =>{
 
   const handleCalculateButton = () =>{
     if (heightFiel && weightFiel){
-      
+
 
     } else {
       Swal.fire({
@@ -61,7 +63,13 @@ const App =() =>{
 
         </div>
         <div className={styles.rightSide}>
-          R
+          <div className={styles.grid} >
+            { 
+              levels.map((item,key)=>(
+                <GridItem key={key} item={item}  /> 
+              ) )
+            }
+          </div>
         </div>
       </div>
 
